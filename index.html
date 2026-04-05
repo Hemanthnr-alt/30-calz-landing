@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>30 Calz | Smart Calorie Tracker & Food Logger</title>
+    <meta name="description" content="Track calories, log meals, monitor hydration, and hit your nutrition goals — all offline on Android.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Clash+Display:wght@400;500;600;700&family=Cabinet+Grotesk:wght@300;400;500;700;800&display=swap" rel="stylesheet">
+    <!-- Fallback if Clash/Cabinet not loading via Google -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,700;0,800;1,300&family=Bebas+Neue&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <!-- Canvas bg -->
+    <canvas id="bg-canvas"></canvas>
+    <div id="scroll-progress"></div>
+
+    <!-- NAVBAR -->
+    <header class="nav" id="nav">
+        <a href="#" class="nav-logo">
+            <div class="logo-mark">
+                <svg width="28" height="28" viewBox="0 0 32 32" fill="none">
+                    <rect width="32" height="32" rx="9" fill="url(#lg)"/>
+                    <defs>
+                        <linearGradient id="lg" x1="0" y1="0" x2="32" y2="32">
+                            <stop offset="0%" stop-color="#a855f7"/>
+                            <stop offset="100%" stop-color="#6366f1"/>
+                        </linearGradient>
+                    </defs>
+                    <text x="6" y="22" font-family="sans-serif" font-size="14" font-weight="900" fill="white">8</text>
+                    <!-- flame shape -->
+                    <path d="M18 8 C18 8 22 12 22 17 C22 20.3 19.3 23 16 23 C12.7 23 10 20.3 10 17 C10 14 12 11 14 9 C14 12 16 13 16 13 C16 13 18 11 18 8Z" fill="white" opacity="0.9"/>
+                </svg>
+            </div>
+            <span class="logo-wordmark">30 Calz</span>
+        </a>
+        <nav class="nav-links">
+            <a href="#features">Features</a>
+            <a href="#screens">App</a>
+            <a href="#nutrition">Nutrition</a>
+            <a href="#faq">FAQ</a>
+        </nav>
+        <a href="#download" class="nav-btn">Get APK</a>
+        <button class="burger" id="burger">
+            <span></span><span></span>
+        </button>
+    </header>
+
+    <!-- MOBILE MENU -->
+    <div class="mob-overlay" id="mobOverlay">
+        <a href="#features">Features</a>
+        <a href="#screens">App</a>
+        <a href="#nutrition">Nutrition</a>
+        <a href="#faq">FAQ</a>
+        <a href="#download" class="mob-cta-link">Download APK</a>
+    </div>
+
+    <main>
+
+        <!-- ══════ HERO ══════ -->
+        <section class="hero">
+            <div class="hero-grid">
+                <div class="hero-left" data-reveal>
+                    <div class="hero-tag">
+                        <span class="live-dot"></span>
+                        Free · Android · Offline-First
+                    </div>
+                    <h1 class="hero-h1">
+                        Know what<br>
+                        you <span class="gradient-text">eat.</span><br>
+                        Own your<br>
+                        <span class="gradient-text">goals.</span>
+                    </h1>
+                    <p class="hero-p">
+                        30 Calz is your personal nutrition command centre — calorie tracking, macro logging, hydration, custom recipes, and smart insights. No internet required.
+                    </p>
+                    <div class="hero-btns">
+                        <a href="#download" class="cta-primary">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                            Download Free APK
+                        </a>
+                        <a href="#screens" class="cta-ghost">See Screenshots →</a>
+                    </div>
+                    <div class="hero-pills">
+                        <div class="pill">🔥 Calorie Tracking</div>
+                        <div class="pill">💧 Hydration</div>
+                        <div class="pill">📊 Macro Goals</div>
+                        <div class="pill">🍽️ Food Database</div>
+                    </div>
+                </div>
+
+                <div class="hero-right" data-reveal data-delay="200">
+                    <div class="mockup-wrap">
+                        <div class="mockup-glow"></div>
+                        <div class="phone floating">
+                            <img src="assets/screen-home.jpeg" alt="30 Calz Home" class="phone-img" onerror="this.style.background='#0d0d1a'">
+                        </div>
+                        <!-- floating stat cards -->
+                        <div class="stat-float sf1">
+                            <div class="sf-icon">🔥</div>
+                            <div class="sf-body">
+                                <div class="sf-num">2468</div>
+                                <div class="sf-lbl">kcal goal</div>
+                            </div>
+                        </div>
+                        <div class="stat-float sf2">
+                            <div class="sf-icon">💧</div>
+                            <div class="sf-body">
+                                <div class="sf-num">2.5L</div>
+                                <div class="sf-lbl">daily water</div>
+                            </div>
+                        </div>
+                        <div class="stat-float sf3">
+                            <div class="sf-icon">⚡</div>
+                            <div class="sf-body">
+                                <div class="sf-num">113g</div>
+                                <div class="sf-lbl">protein target</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="scroll-hint">
+                <div class="sh-line"></div>
+                <span>scroll</span>
+            </div>
+        </section>
+
+        <!-- ══════ STATS BAND ══════ -->
+        <div class="stats-band" data-reveal>
+            <div class="sb-item">
+                <span class="sb-num"><span class="count" data-to="5">0</span></span>
+                <span class="sb-lbl">Screens</span>
+            </div>
+            <div class="sb-sep"></div>
+            <div class="sb-item">
+                <span class="sb-num"><span class="count" data-to="1000">0</span>+</span>
+                <span class="sb-lbl">Foods in DB</span>
+            </div>
+            <div class="sb-sep"></div>
+            <div class="sb-item">
+                <span class="sb-num"><span class="count" data-to="100">0</span>%</span>
+                <span class="sb-lbl">Offline</span>
+            </div>
+            <div class="sb-sep"></div>
+            <div class="sb-item">
+                <span class="sb-num">₹0</span>
+                <span class="sb-lbl">Forever Free</span>
+            </div>
+        </div>
+
+        <!-- ══════ FEATURES ══════ -->
+        <section id="features" class="features">
+            <div class="sec-head" data-reveal>
+                <p class="sec-eye">What's Inside</p>
+                <h2 class="sec-h2">Everything nutrition.<br><em>Nothing unnecessary.</em></h2>
+            </div>
+
+            <div class="feat-bento">
+
+                <!-- BIG: Calorie ring -->
+                <div class="fb-card fb-big feat-cal" data-reveal>
+                    <div class="fb-top">
+                        <span class="feat-emoji">🔥</span>
+                        <h3>Calorie Dashboard</h3>
+                        <p>A beautiful ring tracker shows calories left at a glance. Goal, eaten, and remaining — always on your home screen.</p>
+                    </div>
+                    <div class="cal-ring-demo">
+                        <svg viewBox="0 0 120 120" class="ring-svg">
+                            <circle cx="60" cy="60" r="50" fill="none" stroke="rgba(255,255,255,0.06)" stroke-width="10"/>
+                            <circle cx="60" cy="60" r="50" fill="none" stroke="url(#ringGrad)" stroke-width="10"
+                                stroke-dasharray="314" stroke-dashoffset="220" stroke-linecap="round"
+                                transform="rotate(-90 60 60)" class="ring-progress"/>
+                            <defs>
+                                <linearGradient id="ringGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                                    <stop offset="0%" stop-color="#a855f7"/>
+                                    <stop offset="100%" stop-color="#06b6d4"/>
+                                </linearGradient>
+                            </defs>
+                            <text x="60" y="56" text-anchor="middle" fill="white" font-size="16" font-weight="800" font-family="sans-serif">2318</text>
+                            <text x="60" y="70" text-anchor="middle" fill="#888" font-size="8" font-family="sans-serif">kcal left</text>
+                        </svg>
+                        <div class="ring-macros">
+                            <div class="rm-item"><span class="rm-val protein-c">5g</span><span class="rm-lbl">Protein</span></div>
+                            <div class="rm-item"><span class="rm-val carbs-c">27g</span><span class="rm-lbl">Carbs</span></div>
+                            <div class="rm-item"><span class="rm-val fat-c">3g</span><span class="rm-lbl">Fat</span></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Food Log -->
+                <div class="fb-card feat-log" data-reveal data-delay="80">
+                    <span class="feat-emoji">📋</span>
+                    <h3>Food Diary</h3>
+                    <p>Log Breakfast, Lunch, Dinner & Snacks. Search a massive food database, add custom entries, or log from your saved recipes.</p>
+                    <div class="log-pills">
+                        <div class="lp lp-b">🌅 Breakfast</div>
+                        <div class="lp lp-l">☀️ Lunch</div>
+                        <div class="lp lp-d">🌙 Dinner</div>
+                        <div class="lp lp-s">🍎 Snacks</div>
+                    </div>
+                </div>
+
+                <!-- Hydration -->
+                <div class="fb-card feat-water" data-reveal data-delay="120">
+                    <span class="feat-emoji">💧</span>
+                    <h3>Hydration Tracker</h3>
+                    <p>Set a daily water goal (default 2.5L / 10 glasses). Track intake with one tap. Visual progress ring keeps you consistent.</p>
+                    <div class="water-bar-demo">
+                        <div class="wb-track">
+                            <div class="wb-fill"></div>
+                        </div>
+                        <span class="wb-label">0 / 10 glasses</span>
+                    </div>
+                </div>
+
+                <!-- Recipes -->
+                <div class="fb-card feat-recipe" data-reveal data-delay="160">
+                    <span class="feat-emoji">🍽️</span>
+                    <h3>Custom Recipes</h3>
+                    <p>Build recipes from database ingredients with custom quantities. Log an entire meal with one tap.</p>
+                </div>
+
+                <!-- BIG: Insights -->
+                <div class="fb-card fb-big feat-insights" data-reveal data-delay="200">
+                    <span class="feat-emoji">📊</span>
+                    <h3>Insights & Analytics</h3>
+                    <p>28-day activity heatmap, streak tracking, avg calories, consistency score, and weekly charts — all in one place.</p>
+                    <div class="heatmap-demo">
+                        <div class="hm-row">
+                            <div class="hm-label">S</div>
+                            <div class="hm-cell e0"></div><div class="hm-cell e1"></div><div class="hm-cell e2"></div><div class="hm-cell e1"></div><div class="hm-cell e0"></div>
+                        </div>
+                        <div class="hm-row">
+                            <div class="hm-label">M</div>
+                            <div class="hm-cell e2"></div><div class="hm-cell e3"></div><div class="hm-cell e2"></div><div class="hm-cell e3"></div><div class="hm-cell e1"></div>
+                        </div>
+                        <div class="hm-row">
+                            <div class="hm-label">T</div>
+                            <div class="hm-cell e1"></div><div class="hm-cell e2"></div><div class="hm-cell e3"></div><div class="hm-cell e3"></div><div class="hm-cell e2"></div>
+                        </div>
+                        <div class="hm-row">
+                            <div class="hm-label">W</div>
+                            <div class="hm-cell e3"></div><div class="hm-cell e3"></div><div class="hm-cell e2"></div><div class="hm-cell e1"></div><div class="hm-cell e2"></div>
+                        </div>
+                        <div class="hm-row">
+                            <div class="hm-label">T</div>
+                            <div class="hm-cell e0"></div><div class="hm-cell e1"></div><div class="hm-cell e1"></div><div class="hm-cell e2"></div><div class="hm-cell e3 active"></div>
+                        </div>
+                    </div>
+                    <div class="insight-stats">
+                        <div class="is-item"><span class="is-val">🔥 1</span><span class="is-lbl">Day streak</span></div>
+                        <div class="is-item"><span class="is-val">📅 1</span><span class="is-lbl">Days logged</span></div>
+                        <div class="is-item"><span class="is-val">3%</span><span class="is-lbl">Consistency</span></div>
+                    </div>
+                </div>
+
+                <!-- TDEE / Settings -->
+                <div class="fb-card feat-tdee" data-reveal data-delay="240">
+                    <span class="feat-emoji">🎯</span>
+                    <h3>TDEE Calculator</h3>
+                    <p>Built-in Total Daily Energy Expenditure calculator sets your calorie, protein, carbs, and fat goals automatically from your stats.</p>
+                    <div class="tdee-preview">
+                        <div class="tp-row"><span>Goal</span><span class="tp-val">2468 kcal</span></div>
+                        <div class="tp-row"><span>Protein</span><span class="tp-val protein-c">113g</span></div>
+                        <div class="tp-row"><span>Carbs</span><span class="tp-val carbs-c">349g</span></div>
+                        <div class="tp-row"><span>Fat</span><span class="tp-val fat-c">69g</span></div>
+                    </div>
+                </div>
+
+                <!-- Offline / Privacy -->
+                <div class="fb-card feat-offline" data-reveal data-delay="280">
+                    <span class="feat-emoji">🔒</span>
+                    <h3>Private by Design</h3>
+                    <p>All data stored locally. No account. No cloud sync. No ads. Your nutrition data never leaves your phone.</p>
+                    <div class="privacy-badges">
+                        <span class="pb">No Account</span>
+                        <span class="pb">No Ads</span>
+                        <span class="pb">Local Only</span>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- ══════ NUTRITION BREAKDOWN ══════ -->
+        <section id="nutrition" class="nutrition-section">
+            <div class="nut-inner">
+                <div class="nut-text" data-reveal>
+                    <p class="sec-eye">Smart Macros</p>
+                    <h2 class="sec-h2">Track every gram.<br><em>Hit every goal.</em></h2>
+                    <p class="nut-desc">30 Calz tracks all three macronutrients with colour-coded cards, personalised targets, and daily progress — so you always know exactly where you stand.</p>
+                    <div class="macro-list">
+                        <div class="macro-row">
+                            <div class="macro-dot md-protein"></div>
+                            <div class="macro-info">
+                                <span class="macro-name">Protein</span>
+                                <span class="macro-sub">Muscle repair & satiety</span>
+                            </div>
+                            <span class="macro-target protein-c">113g / day</span>
+                        </div>
+                        <div class="macro-row">
+                            <div class="macro-dot md-carbs"></div>
+                            <div class="macro-info">
+                                <span class="macro-name">Carbohydrates</span>
+                                <span class="macro-sub">Energy & performance</span>
+                            </div>
+                            <span class="macro-target carbs-c">349g / day</span>
+                        </div>
+                        <div class="macro-row">
+                            <div class="macro-dot md-fat"></div>
+                            <div class="macro-info">
+                                <span class="macro-name">Fat</span>
+                                <span class="macro-sub">Hormones & brain health</span>
+                            </div>
+                            <span class="macro-target fat-c">69g / day</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="nut-visual" data-reveal data-delay="150">
+                    <div class="donut-wrap">
+                        <svg viewBox="0 0 200 200" class="donut-svg">
+                            <circle cx="100" cy="100" r="80" fill="none" stroke="#1a1a2e" stroke-width="28"/>
+                            <!-- Protein slice -->
+                            <circle cx="100" cy="100" r="80" fill="none" stroke="#ec4899" stroke-width="28"
+                                stroke-dasharray="503" stroke-dashoffset="377"
+                                transform="rotate(-90 100 100)" stroke-linecap="butt"/>
+                            <!-- Carbs slice -->
+                            <circle cx="100" cy="100" r="80" fill="none" stroke="#06b6d4" stroke-width="28"
+                                stroke-dasharray="503" stroke-dashoffset="126"
+                                transform="rotate(36 100 100)" stroke-linecap="butt"/>
+                            <!-- Fat slice -->
+                            <circle cx="100" cy="100" r="80" fill="none" stroke="#f59e0b" stroke-width="28"
+                                stroke-dasharray="503" stroke-dashoffset="427"
+                                transform="rotate(237 100 100)" stroke-linecap="butt"/>
+                            <text x="100" y="96" text-anchor="middle" fill="white" font-size="22" font-weight="800" font-family="sans-serif">2468</text>
+                            <text x="100" y="114" text-anchor="middle" fill="#666" font-size="11" font-family="sans-serif">kcal goal</text>
+                        </svg>
+                        <div class="donut-legend">
+                            <div class="dl-item"><span class="dl-dot" style="background:#ec4899"></span>Protein 18%</div>
+                            <div class="dl-item"><span class="dl-dot" style="background:#06b6d4"></span>Carbs 57%</div>
+                            <div class="dl-item"><span class="dl-dot" style="background:#f59e0b"></span>Fat 25%</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ══════ SCREENSHOTS ══════ -->
+        <section id="screens" class="screens-section">
+            <div class="sec-head" data-reveal>
+                <p class="sec-eye">The App</p>
+                <h2 class="sec-h2">Beautiful dark UI.<br><em>Built for AMOLED.</em></h2>
+            </div>
+            <div class="screens-scroll-wrap" data-reveal data-delay="100">
+                <div class="screens-row">
+                    <div class="sc-card">
+                        <img src="assets/screen-home.jpeg" alt="Home – Calorie Ring" onerror="this.parentElement.classList.add('img-missing')">
+                        <div class="sc-cap">🏠 Home · Calorie Ring</div>
+                    </div>
+                    <div class="sc-card">
+                        <img src="assets/screen-log.jpeg" alt="Food Log" onerror="this.parentElement.classList.add('img-missing')">
+                        <div class="sc-cap">📋 Log · Food Diary</div>
+                    </div>
+                    <div class="sc-card">
+                        <img src="assets/screen-recipes.jpeg" alt="Recipes" onerror="this.parentElement.classList.add('img-missing')">
+                        <div class="sc-cap">🍽️ Recipes</div>
+                    </div>
+                    <div class="sc-card">
+                        <img src="assets/screen-water.jpeg" alt="Hydration" onerror="this.parentElement.classList.add('img-missing')">
+                        <div class="sc-cap">💧 Hydration</div>
+                    </div>
+                    <div class="sc-card">
+                        <img src="assets/screen-insights.jpeg" alt="Insights" onerror="this.parentElement.classList.add('img-missing')">
+                        <div class="sc-cap">📊 Insights</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ══════ WHY STRIP ══════ -->
+        <section class="why-strip">
+            <div class="why-inner">
+                <div class="why-item" data-reveal>
+                    <div class="wi-icon">⚡</div>
+                    <h3>Instant Logging</h3>
+                    <p>Quick Add shows your most recent foods at the top. Log a repeated meal in under 3 seconds.</p>
+                </div>
+                <div class="why-item" data-reveal data-delay="80">
+                    <div class="wi-icon">🎯</div>
+                    <h3>TDEE Auto-Setup</h3>
+                    <p>Enter your age, weight, height, and activity level — 30 Calz calculates your exact calorie and macro targets.</p>
+                </div>
+                <div class="why-item" data-reveal data-delay="160">
+                    <div class="wi-icon">🏅</div>
+                    <h3>Badges & Streaks</h3>
+                    <p>Log every day to grow your streak. Earn badges as you hit milestones, tracked in the Insights tab.</p>
+                </div>
+                <div class="why-item" data-reveal data-delay="240">
+                    <div class="wi-icon">🌗</div>
+                    <h3>Multiple Themes</h3>
+                    <p>Choose from Slate and other beautiful themes in Settings. Light, Dark, or System-adaptive.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ══════ FAQ ══════ -->
+        <section id="faq" class="faq-section">
+            <div class="sec-head" data-reveal>
+                <p class="sec-eye">FAQ</p>
+                <h2 class="sec-h2">Quick answers.</h2>
+            </div>
+            <div class="faq-wrap">
+                <div class="fq" data-reveal>
+                    <button class="fq-q"><span>Is 30 Calz completely free?</span><span class="fq-icon">+</span></button>
+                    <div class="fq-a"><p>Yes, completely. No subscriptions, no premium tiers, no ads. Download once and all features are yours forever.</p></div>
+                </div>
+                <div class="fq" data-reveal data-delay="50">
+                    <button class="fq-q"><span>Does it work without internet?</span><span class="fq-icon">+</span></button>
+                    <div class="fq-a"><p>100% offline. Every feature — food logging, calorie tracking, hydration, recipes, insights — runs entirely locally. Your data never leaves your device.</p></div>
+                </div>
+                <div class="fq" data-reveal data-delay="100">
+                    <button class="fq-q"><span>How does the TDEE calculator work?</span><span class="fq-icon">+</span></button>
+                    <div class="fq-a"><p>Enter your weight, height, age, gender, and activity level. The app uses the Mifflin-St Jeor formula to calculate your maintenance calories, then adjusts for your goal (lose / maintain / gain). All macro targets are set automatically.</p></div>
+                </div>
+                <div class="fq" data-reveal data-delay="150">
+                    <button class="fq-q"><span>Can I log Indian foods?</span><span class="fq-icon">+</span></button>
+                    <div class="fq-a"><p>Yes! The database includes common Indian foods like oats dosa, dal, roti, and more. You can also add custom foods with your own calorie and macro values.</p></div>
+                </div>
+                <div class="fq" data-reveal data-delay="200">
+                    <button class="fq-q"><span>What Android version is required?</span><span class="fq-icon">+</span></button>
+                    <div class="fq-a"><p>Android 8.0 (Oreo) or higher. The app is lightweight and performs well on budget devices.</p></div>
+                </div>
+                <div class="fq" data-reveal data-delay="250">
+                    <button class="fq-q"><span>Is my data safe if I uninstall?</span><span class="fq-icon">+</span></button>
+                    <div class="fq-a"><p>Data is stored locally. Uninstalling the app will clear app data. We recommend using the Data & Privacy export feature in Settings to back up your logs before uninstalling.</p></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ══════ DOWNLOAD ══════ -->
+        <section id="download" class="dl-section">
+            <div class="dl-card" data-reveal>
+                <div class="dl-glow-1"></div>
+                <div class="dl-glow-2"></div>
+                <div class="dl-body">
+                    <p class="sec-eye" style="text-align:center">Get Started</p>
+                    <h2 class="dl-h2">Start tracking<br><em>today. Free.</em></h2>
+                    <p class="dl-sub">Android APK · Works offline · No account needed · No ads</p>
+                    <a href="30-calz.apk" class="dl-btn" download>
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                        Download 30 Calz APK
+                    </a>
+                    <p class="dl-note">Android 8.0+ · ~12MB · Free forever</p>
+                    <div class="dl-trust">
+                        <span>🔒 Data stays on device</span>
+                        <span>🚫 No ads</span>
+                        <span>✅ No subscription</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="footer-top">
+            <div class="ft-brand">
+                <a href="#" class="nav-logo">
+                    <div class="logo-mark">
+                        <svg width="26" height="26" viewBox="0 0 32 32" fill="none">
+                            <rect width="32" height="32" rx="9" fill="url(#lg2)"/>
+                            <defs><linearGradient id="lg2" x1="0" y1="0" x2="32" y2="32"><stop offset="0%" stop-color="#a855f7"/><stop offset="100%" stop-color="#6366f1"/></linearGradient></defs>
+                            <path d="M18 8 C18 8 22 12 22 17 C22 20.3 19.3 23 16 23 C12.7 23 10 20.3 10 17 C10 14 12 11 14 9 C14 12 16 13 16 13 C16 13 18 11 18 8Z" fill="white" opacity="0.9"/>
+                        </svg>
+                    </div>
+                    <span class="logo-wordmark">30 Calz</span>
+                </a>
+                <p class="ft-tagline">Smart nutrition tracking for real people.</p>
+            </div>
+            <div class="ft-links">
+                <a href="#features">Features</a>
+                <a href="#screens">App</a>
+                <a href="#nutrition">Nutrition</a>
+                <a href="#faq">FAQ</a>
+                <a href="#download">Download</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2026 30 Calz. Built with ❤️ for your health.</p>
+            <p class="ft-family">Part of the <strong>30 Series</strong> — also check out <a href="#">30 Fitness</a></p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
